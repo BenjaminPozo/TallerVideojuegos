@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c76tosfa5qxvx"]
+
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_kguns"]
+[ext_resource type="Texture2D" uid="uid://bar8bvu22lmcp" path="res://Resources/SLIME ANIMATION_STRIP/SLIME PLATFORMER_STRIP_Idle.png" id="1_nxy33"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_56fwn"]
+
+[sub_resource type="Animation" id="Animation_pul64"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k247j"]
+_data = {
+"idle": SubResource("Animation_pul64")
+}
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(-3, -5)
+scale = Vector2(7, 7)
+script = ExtResource("1_kguns")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_56fwn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+scale = Vector2(1, 1)
+texture = ExtResource("1_nxy33")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k247j")
+}
